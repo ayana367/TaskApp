@@ -32,4 +32,18 @@
         android:name="com.example.taskapp.ui.home.new_task.NewTaskFragment"
         android:label="fragment_new_task"
         tools:layout="@layout/fragment_new_task" />
+    <fragment
+        android:id="@+id/onBoardFragment"
+        android:name="com.example.taskapp.ui.OnBoard.OnBoardFragment"
+        android:label="fragment_on_board"
+        tools:layout="@layout/fragment_on_board" />
+    <fragment
+        android:id="@+id/onBoardPageFragment"
+        android:name="com.example.taskapp.ui.OnBoard.OnBoardPageFragment"
+        android:label="fragment_on_board_page"
+        tools:layout="@layout/fragment_on_board_page" />
+    <fragment
+        android:id="@+id/onBoardPageFragment2"
+        android:name="com.example.taskapp.ui.OnBoard.OnBoardPageFragment.OnBoardPageFragment"
+        android:label="OnBoardPageFragment" />
 </navigation>

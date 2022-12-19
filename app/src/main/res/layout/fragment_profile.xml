@@ -1,25 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:orientation="vertical"
-android:gravity="center"
-tools:context=".ui.profile.ProfileFragment">
+   xmlns:app="http://schemas.android.com/apk/res-auto"
+   xmlns:tools="http://schemas.android.com/tools"
+   android:layout_width="match_parent"
+   android:layout_height="match_parent"
+    android:padding="75dp"
+   android:orientation="vertical"
+   tools:context=".ui.profile.ProfileFragment">
 
-<androidx.cardview.widget.CardView
-    android:layout_width="258dp"
-    android:layout_height="258dp"
-    app:cardCornerRadius="128dp"
-    app:cardElevation="15dp"
-    >
+    <androidx.cardview.widget.CardView
+        android:layout_width="258dp"
+        android:layout_height="258dp"
+        app:cardCornerRadius="128dp"
+        app:cardElevation="15dp"
+        >
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:src="@drawable/roz"
-        android:scaleType="centerCrop"
+        <ImageView
+            android:id="@+id/imageView"
+            android:src="@drawable/roz"
+            android:scaleType="centerCrop"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </androidx.cardview.widget.CardView>
+
+    <EditText
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-</androidx.cardview.widget.CardView>
+        android:layout_height="50dp"
+        android:background="@drawable/edit_text"
+        android:padding="10dp"
+        android:hint="Name"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:layout_marginTop="30dp"/>
 </LinearLayout>

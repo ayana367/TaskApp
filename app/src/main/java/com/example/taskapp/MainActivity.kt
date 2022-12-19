@@ -33,9 +33,12 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
 
         navController.addOnDestinationChangedListener{ _, destination, _ ->
-            if(destination.id == R.id.newTaskFragment){
+            if(destination.id == R.id.newTaskFragment || destination.id == R.id.onBoardFragment){
                 navView.visibility = View.GONE
             }else navView.visibility = View.VISIBLE
+            if (destination.id == R.id.onBoardFragment) {
+                supportActionBar?.hide()
+            }
         }
     }
 }
