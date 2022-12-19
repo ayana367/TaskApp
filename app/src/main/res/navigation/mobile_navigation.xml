@@ -42,8 +42,4 @@
         android:name="com.example.taskapp.ui.OnBoard.OnBoardPageFragment"
         android:label="fragment_on_board_page"
         tools:layout="@layout/fragment_on_board_page" />
-    <fragment
-        android:id="@+id/onBoardPageFragment2"
-        android:name="com.example.taskapp.ui.OnBoard.OnBoardPageFragment.OnBoardPageFragment"
-        android:label="OnBoardPageFragment" />
 </navigation>

@@ -43,7 +43,6 @@ class OnBoardPageFragment(listenerSkip: () -> Unit, listenerNext: () -> Unit) : 
             }
         }
         private fun initListeners() {
-
             binding!!.btnNext.setOnClickListener{
                 listenerNext.invoke()
             }
