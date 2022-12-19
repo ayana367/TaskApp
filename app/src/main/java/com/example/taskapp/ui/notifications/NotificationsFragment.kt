@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.example.taskapp.R
 import com.example.taskapp.databinding.FragmentNotificationsBinding
 
 class NotificationsFragment : Fragment() {
@@ -20,6 +22,10 @@ class NotificationsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
+
+        binding.btnBoar.setOnClickListener {
+            findNavController().navigate(R.id.onBoardFragment)
+        }
         return binding.root
     }
 
