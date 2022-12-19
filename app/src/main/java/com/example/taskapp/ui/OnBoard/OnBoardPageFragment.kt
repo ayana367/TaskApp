@@ -10,50 +10,47 @@ import androidx.navigation.fragment.findNavController
 import com.example.taskapp.R
 import com.example.taskapp.databinding.FragmentOnBoardPageBinding
 
+class OnBoardPageFragment(var listenerSkip:() -> Unit,
+                          var listenerNext:() -> Unit  ) : Fragment() {
 
-class OnBoardPageFragment(listenerSkip: () -> Unit, listenerNext: () -> Unit) : Fragment() {
+    private var binding: FragmentOnBoardPageBinding? = null
 
-    class OnBoardPageFragment(var listenerSkip:() -> Unit,
-                              var listenerNext:() -> Unit  ) : Fragment() {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentOnBoardPageBinding.inflate(LayoutInflater.from(context),container,false)
+        return binding!!.root
+    }
 
-        private var binding: FragmentOnBoardPageBinding? = null
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initViews()
+        initListeners()
+    }
+    private fun initViews() {
+        arguments.let {
+            val data = it?.getSerializable("onBoard") as BoardModel
+            binding!!.tvTitleBoard.text = data.title
+            binding!!.tvDescBoard.text = data.description
+            data.img?.let { it1 -> binding!!.imageBoard.setImageResource(it1) }
+            binding!!.btnSkip.isVisible = data.isLast == false
+            binding!!.btnNext.isVisible = data.isLast == false
+            binding!!.btnStart.isVisible = data.isLast == true
+        }
+    }
+    private fun initListeners() {
 
-        override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
-        ): View {
-            binding = FragmentOnBoardPageBinding.inflate(LayoutInflater.from(context),container,false)
-            return binding!!.root
+        binding!!.btnNext.setOnClickListener{
+            listenerNext.invoke()
         }
 
-        override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-            super.onViewCreated(view, savedInstanceState)
-            initViews()
-            initListeners()
+        binding!!.btnSkip.setOnClickListener{
+            listenerSkip.invoke()
         }
-        private fun initViews() {
-            arguments.let {
-                val data = it?.getSerializable("onBoard") as BoardModel
-                binding!!.tvTitleBoard.text = data.title
-                binding!!.tvDescBoard.text = data.description
-                data.img?.let { it1 -> binding!!.imageBoard.setImageResource(it1) }
-                binding!!.btnSkip.isVisible = data.isLast == false
-                binding!!.btnNext.isVisible = data.isLast == false
-                binding!!.btnStart.isVisible = data.isLast == true
-            }
-        }
-        private fun initListeners() {
-            binding!!.btnNext.setOnClickListener{
-                listenerNext.invoke()
-            }
 
-            binding!!.btnSkip.setOnClickListener{
-                listenerSkip.invoke()
-            }
-
-            binding!!.btnStart.setOnClickListener{
-                findNavController().navigate(R.id.navigation_home)
-            }
+        binding!!.btnStart.setOnClickListener{
+            findNavController().navigate(R.id.navigation_home)
         }
     }
 }
