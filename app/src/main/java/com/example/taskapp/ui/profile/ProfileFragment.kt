@@ -23,8 +23,8 @@ class ProfileFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        //  binding = FragmentProfileBinding.inflate(LayoutInflater.from(context), container, false)
-        //   imageChooser()
+          binding = FragmentProfileBinding.inflate(LayoutInflater.from(context), container, false)
+          imageChooser()
         return binding!!.root
     }
 
