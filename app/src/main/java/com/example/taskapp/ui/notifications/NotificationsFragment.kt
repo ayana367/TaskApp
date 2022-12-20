@@ -23,9 +23,7 @@ class NotificationsFragment : Fragment() {
     ): View {
         _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
 
-        binding.btnBoar.setOnClickListener {
-            findNavController().navigate(R.id.onBoardFragment)
-        }
+
         return binding.root
     }
 

@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-
+        navController.navigate(R.id.onBoardFragment)
         navController.addOnDestinationChangedListener{ _, destination, _ ->
             if(destination.id == R.id.newTaskFragment || destination.id == R.id.onBoardFragment){
                 navView.visibility = View.GONE
