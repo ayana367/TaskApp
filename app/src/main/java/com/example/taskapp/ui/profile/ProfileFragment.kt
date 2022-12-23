@@ -14,19 +14,18 @@ import com.example.taskapp.databinding.FragmentProfileBinding
 import com.example.taskapp.ui.utils.Preferences
 
 
-class ProfileFragment : Fragment() {
+class ProfileFragment : Fragment(){
+    lateinit var preferences: Preferences
+
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
-    private lateinit var preferences : Preferences
+
 
     private var mGetContent = this.registerForActivityResult<String, Uri>(
         ActivityResultContracts.GetContent()
     ) { uri ->
         preferences.setProfile(uri.toString())
-        _binding?.let {
-            Glide.with(requireContext()).load(uri).circleCrop().placeholder(R.drawable.roz).into(
-                it.imageView)
-        }
+        Glide.with(requireContext()).load(uri).circleCrop().placeholder(R.drawable.roz).into(binding.imageView)
     }
 
     override fun onCreateView(
@@ -34,12 +33,14 @@ class ProfileFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-          _binding = FragmentProfileBinding.inflate(LayoutInflater.from(context), container, false)
-          imageChooser()
-        Glide.with(requireContext()).load(preferences.isProfile()).circleCrop().placeholder(R.drawable.roz).into(
-            binding.imageView)
+        preferences = Preferences(requireContext())
+
+        _binding = FragmentProfileBinding.inflate(LayoutInflater.from(context), container, false)
+        imageChooser()
+        Glide.with(requireContext()).load(preferences.isProfile()).circleCrop().placeholder(R.drawable.roz).into(binding.imageView)
         return binding.root
     }
+
     override fun onResume() {
         super.onResume()
         val sh: SharedPreferences = this.requireActivity().getSharedPreferences("pref", Context.MODE_PRIVATE)

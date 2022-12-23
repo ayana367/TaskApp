@@ -8,15 +8,21 @@ import com.example.taskapp.databinding.TaskItemBinding
 
 class TaskAdapter : RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
 
-    fun addTask(taskModel: TaskModel){
-        taskList.add(0,taskModel)
+    fun addTask(taskModel: TaskModel) {
+        taskList.add(0, taskModel)
         notifyItemChanged(0)
     }
 
     private var taskList = arrayListOf<TaskModel>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(TaskItemBinding.inflate(LayoutInflater.from(parent.context),parent,false))
+        return ViewHolder(
+            TaskItemBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -25,15 +31,13 @@ class TaskAdapter : RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
 
     override fun getItemCount(): Int = taskList.size
 
-    inner class ViewHolder(private val binding: TaskItemBinding) : RecyclerView.ViewHolder(binding.root){
+    inner class ViewHolder(private val binding: TaskItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(taskModel: TaskModel) {
-            fun bind(taskModel: TaskModel) {
-                binding.tvTitle.text = taskModel.title
-                binding.tvDesc.text = taskModel.description
-                binding.image.setImageURI(taskModel.image.toUri())
-                binding.data.text = taskModel.data
-            }
+            binding.tvTitle.text = taskModel.title
+            binding.tvDesc.text = taskModel.description
+            binding.image.setImageURI(taskModel.image.toUri())
+            binding.data.text = taskModel.data
         }
-
     }
 }

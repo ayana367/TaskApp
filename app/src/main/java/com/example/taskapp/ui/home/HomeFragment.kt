@@ -38,7 +38,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun initListeners() {
-        binding.fabHome.setOnClickListener{
+        binding.fabHome.setOnClickListener {
             findNavController().navigate(R.id.newTaskFragment)
         }
     }
@@ -50,7 +50,7 @@ class HomeFragment : Fragment() {
             adapter = taskAdapter
         }
 
-        setFragmentResultListener("new_task") { key,bundle->
+        setFragmentResultListener("new_task") { key, bundle ->
             val task = bundle.getSerializable("data") as TaskModel
             taskAdapter.addTask(task)
         }

@@ -15,11 +15,11 @@ import com.example.taskapp.databinding.FragmentNewTaskBinding
 
 class NewTaskFragment : Fragment() {
     private lateinit var binding: FragmentNewTaskBinding
-    var imgUri : String = ""
+    var imgUri: String = ""
 
     private var mGetContent = this.registerForActivityResult<String, Uri>(
         ActivityResultContracts.GetContent()
-    ){ uri ->
+    ) { uri ->
         binding.imageNewTask.setImageURI(uri)
         imgUri = uri.toString()
     }
@@ -28,23 +28,30 @@ class NewTaskFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentNewTaskBinding.inflate(LayoutInflater.from(context),container,false)
+        binding = FragmentNewTaskBinding.inflate(LayoutInflater.from(context), container, false)
 
         initListeners()
         return binding.root
     }
+
     private fun initListeners() {
         binding.btnSave.setOnClickListener {
             setFragmentResult(
                 "new_task",
                 bundleOf(
-                    "data" to TaskModel(imgUri,binding.etTitle.text.toString(),binding.etDesc.text.toString(),binding.etData.text.toString())))
+                    "data" to TaskModel(
+                        imgUri,
+                        binding.etTitle.text.toString(),
+                        binding.etDesc.text.toString(),
+                        binding.etData.text.toString()
+                    )
+                )
+            )
 
             findNavController().navigateUp()
         }
-        binding.imageNewTask.setOnClickListener{
+        binding.imageNewTask.setOnClickListener {
             mGetContent.launch("image/*")
         }
     }
 }
-
