@@ -2,6 +2,7 @@ package com.example.taskapp.ui.home.new_task
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
 import com.example.taskapp.databinding.TaskItemBinding
 
@@ -26,8 +27,12 @@ class TaskAdapter : RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
 
     inner class ViewHolder(private val binding: TaskItemBinding) : RecyclerView.ViewHolder(binding.root){
         fun bind(taskModel: TaskModel) {
-            binding.tvTitle.text = taskModel.title
-            binding.tvDesc.text = taskModel.description
+            fun bind(taskModel: TaskModel) {
+                binding.tvTitle.text = taskModel.title
+                binding.tvDesc.text = taskModel.description
+                binding.image.setImageURI(taskModel.image.toUri())
+                binding.data.text = taskModel.data
+            }
         }
 
     }
