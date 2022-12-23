@@ -11,7 +11,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import com.bumptech.glide.Glide
 import com.example.taskapp.R
 import com.example.taskapp.databinding.FragmentProfileBinding
-import com.example.taskapp.ui.Preferences.Preferences
+import com.example.taskapp.ui.utils.Preferences
 
 
 class ProfileFragment : Fragment() {

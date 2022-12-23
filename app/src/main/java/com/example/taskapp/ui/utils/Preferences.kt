@@ -1,9 +1,8 @@
-package com.example.taskapp.ui.Preferences
+package com.example.taskapp.ui.utils
 
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
-
 
 class Preferences(private val context: Context) {
     val sharedPref: SharedPreferences = context.getSharedPreferences("prefences",MODE_PRIVATE)
@@ -26,4 +25,3 @@ class Preferences(private val context: Context) {
 
 
 }
-

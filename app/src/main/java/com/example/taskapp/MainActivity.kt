@@ -9,7 +9,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.taskapp.databinding.ActivityMainBinding
-import com.example.taskapp.ui.Preferences.Preferences
+import com.example.taskapp.ui.utils.Preferences
 
 class MainActivity : AppCompatActivity() {
 
