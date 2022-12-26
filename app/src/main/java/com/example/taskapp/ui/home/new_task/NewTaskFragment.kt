@@ -10,6 +10,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
 import androidx.navigation.fragment.findNavController
+import com.example.taskapp.App
 import com.example.taskapp.R
 import com.example.taskapp.databinding.FragmentNewTaskBinding
 
@@ -36,18 +37,12 @@ class NewTaskFragment : Fragment() {
 
     private fun initListeners() {
         binding.btnSave.setOnClickListener {
-            setFragmentResult(
-                "new_task",
-                bundleOf(
-                    "data" to TaskModel(
-                        imgUri,
-                        binding.etTitle.text.toString(),
-                        binding.etDesc.text.toString(),
-                        binding.etData.text.toString()
-                    )
-                )
-            )
-
+            App.db.dao().insert(TaskModel(
+                image = imgUri,
+                title = binding.etTitle.text.toString(),
+                description = binding.etDesc.text.toString(),
+                data = binding.etData.text.toString()
+            ))
             findNavController().navigateUp()
         }
         binding.imageNewTask.setOnClickListener {
