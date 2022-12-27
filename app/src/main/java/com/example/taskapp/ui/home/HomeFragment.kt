@@ -56,34 +56,19 @@ class HomeFragment : Fragment(){
         if (id == R.id.atoz) {
                     sortAlphabet()
                     App.db.dao().sort()
-                }
             Toast.makeText(activity,"Cортировка по алфавиту", Toast.LENGTH_LONG).show()
-        if (id == R.id.data) {
-                    everybodySort()
-                    App.db.dao().everybodySort()
-            Toast.makeText(activity, "Cортировка всего", Toast.LENGTH_LONG).show()
-        }
+                }
         if (id == R.id.yb){
             data()
             App.db.dao().data()
+            Toast.makeText(activity,"Cортировка по убыванию даты", Toast.LENGTH_LONG).show()
         }
-
         return super.onOptionsItemSelected(item)
-
     }
 
     private fun data() {
         Collections.sort(task, Comparator<TaskModel>{ a,d ->
             a.data.compareTo(a.data)
-        })
-        taskAdapter.notifyDataSetChanged()
-    }
-
-    private fun everybodySort() {
-        Collections.sort(task,Comparator<TaskModel>{ d, a ->
-            d.title.compareTo(a.title)
-            d.description.compareTo(a.description)
-            d.data.compareTo(a.data)
         })
         taskAdapter.notifyDataSetChanged()
     }

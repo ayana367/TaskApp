@@ -4,9 +4,7 @@
     <item android:id="@+id/atoz"
         android:title="от А до Z"
         app:showAsAction="never"/>
-    <item android:id="@+id/data"
-        android:title="Cортировка всего"
-        app:showAsAction="never"/>
+
     <item android:id="@+id/yb"
         android:title="По убыванию"
         app:showAsAction="never"/>

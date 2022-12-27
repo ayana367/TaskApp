@@ -21,9 +21,6 @@ interface TaskDao {
     @Query("SELECT * FROM TaskModel ORDER BY title Asc")
     fun sort():List<TaskModel>
 
-    @Query("SELECT * FROM TaskModel ORDER BY title,description,data Asc")
-    fun everybodySort():List<TaskModel>
-
     @Query("SELECT * FROM TaskModel ORDER BY data DESC")
     fun data():List<TaskModel>
 }

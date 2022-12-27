@@ -65,6 +65,7 @@ class TaskAdapter() : RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
     }
 
     private fun deleteTask(i: Int) {
+        i!=1
         taskList.removeAt(i)
         notifyDataSetChanged()
     }
