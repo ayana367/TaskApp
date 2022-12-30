@@ -8,7 +8,7 @@ data class TaskModel(
 @PrimaryKey(autoGenerate = true)
     val id : Long? = null,
     val image : String,
-val title : String,
-val description : String,
-val data : String
+    val title : String,
+    val description : String,
+    val data : String
 ):java.io.Serializable

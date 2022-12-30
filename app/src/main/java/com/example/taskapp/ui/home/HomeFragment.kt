@@ -17,9 +17,10 @@ import com.example.taskapp.databinding.FragmentHomeBinding
 import com.example.taskapp.ui.home.new_task.TaskAdapter
 import com.example.taskapp.ui.home.new_task.TaskModel
 import java.util.*
+import java.util.Collections.sort
 import kotlin.Comparator
 
-class HomeFragment : Fragment(){
+class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private lateinit var taskAdapter: TaskAdapter
@@ -34,7 +35,6 @@ class HomeFragment : Fragment(){
         initViews()
         initListeners()
         setHasOptionsMenu(true)
-
         return binding.root
     }
 
@@ -43,62 +43,45 @@ class HomeFragment : Fragment(){
         super.onCreate(savedInstanceState)
         taskAdapter = TaskAdapter()
     }
-
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.menu, menu)
-        super.onCreateOptionsMenu(menu, inflater)
-    }
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val id = item.itemId
-
-        if (id == R.id.atoz) {
-                    sortAlphabet()
-                    App.db.dao().sort()
-            Toast.makeText(activity,"Cортировка по алфавиту", Toast.LENGTH_LONG).show()
+        if (item.itemId == R.id.sort) {
+            val item = arrayOf("По Дате","По алфавиту")
+            val builder = AlertDialog.Builder(requireContext())
+            with(builder){
+                setTitle("Сортировать по:")
+                setItems(item){a1,a2->
+                    when(a2){
+                        0->{
+                            taskAdapter.addTask(App.db.dao().getListByDate())
+                            }
+                        1->{
+                            taskAdapter.addTask(App.db.dao().getListByAlphabet())
+                        }
+                    }
                 }
-        if (id == R.id.yb){
-            data()
-            App.db.dao().data()
-            Toast.makeText(activity,"Cортировка по убыванию даты", Toast.LENGTH_LONG).show()
+            }.show()
         }
-        return super.onOptionsItemSelected(item)
+            return super.onOptionsItemSelected(item)
     }
-
-    private fun data() {
-        Collections.sort(task, Comparator<TaskModel>{ a,d ->
-            a.data.compareTo(a.data)
-        })
-        taskAdapter.notifyDataSetChanged()
-    }
-
-    private fun sortAlphabet() {
-        Collections.sort(task,Comparator <TaskModel>{ t, t2 ->
-            t.title.compareTo(t2.title)
-        })
-        taskAdapter.notifyDataSetChanged()
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu,menu)
+        super.onCreateOptionsMenu(menu, inflater)
     }
     private fun initListeners() {
         binding.fabHome.setOnClickListener {
             findNavController().navigate(R.id.newTaskFragment)
         }
     }
-
-
     private fun initViews() {
         binding.rvHome.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = taskAdapter
         }
-
         val listOfTask = App.db.dao().getAllTask()
         taskAdapter.addTask(listOfTask)
     }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
 }

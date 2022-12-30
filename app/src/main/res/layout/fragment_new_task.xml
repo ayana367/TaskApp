@@ -72,7 +72,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="numberSigned"
+            android:inputType="textPhonetic"
             android:id="@+id/et_data"/>
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -82,6 +82,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/et_layout_data"
         android:layout_marginTop="16dp"
+        app:cornerRadius="15dp"
         android:text="@string/save"
         android:textColor="@color/white"
         android:textStyle="bold"
