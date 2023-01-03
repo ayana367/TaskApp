@@ -20,10 +20,11 @@
 
         <ImageView
             android:id="@+id/image_new_task"
-            android:src="@drawable/roz"
+            android:src="@drawable/profiles"
             android:scaleType="centerCrop"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:contentDescription="@string/todo" />
     </androidx.cardview.widget.CardView>
 
 
@@ -63,7 +64,7 @@
         android:id="@+id/et_layout_data"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Data"
+        android:hint="@string/data"
         android:layout_marginTop="20dp"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         app:layout_constraintTop_toBottomOf="@id/et_layout_desc"
@@ -89,4 +90,6 @@
         android:textAllCaps="false"
         android:textSize="20sp"
         android:paddingVertical="12dp"/>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

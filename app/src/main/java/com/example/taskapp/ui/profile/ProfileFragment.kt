@@ -1,6 +1,4 @@
 package com.example.taskapp.ui.profile
-import android.content.Context
-import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,14 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
-import com.bumptech.glide.Glide
-import com.example.taskapp.R
 import com.example.taskapp.databinding.FragmentProfileBinding
+import com.example.taskapp.extenssion.loadImage
 import com.example.taskapp.ui.utils.Preferences
 
 
-class ProfileFragment : Fragment(){
-    lateinit var preferences: Preferences
+class ProfileFragment : Fragment() {
+    private lateinit var preferences: Preferences
 
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
@@ -25,7 +22,7 @@ class ProfileFragment : Fragment(){
         ActivityResultContracts.GetContent()
     ) { uri ->
         preferences.setProfile(uri.toString())
-        Glide.with(requireContext()).load(uri).circleCrop().placeholder(R.drawable.roz).into(binding.imageView)
+        binding.imageView.loadImage(uri.toString())
     }
 
     override fun onCreateView(
@@ -34,28 +31,34 @@ class ProfileFragment : Fragment(){
         savedInstanceState: Bundle?
     ): View {
         preferences = Preferences(requireContext())
-
         _binding = FragmentProfileBinding.inflate(LayoutInflater.from(context), container, false)
         imageChooser()
-        Glide.with(requireContext()).load(preferences.isProfile()).circleCrop().placeholder(R.drawable.roz).into(binding.imageView)
+        binding.imageView.loadImage(preferences.isProfile())
+        binding.editName.setText(preferences.isProfileUser())
+        binding.email.setText(preferences.isProfileEmail())
+        binding.phone.setText(preferences.isProfilePhone())
+        binding.gender.setText(preferences.isProfileGender())
+        binding.data.setText(preferences.isProfileDate())
+
         return binding.root
     }
 
     override fun onResume() {
         super.onResume()
-        val sh: SharedPreferences = this.requireActivity().getSharedPreferences("pref", Context.MODE_PRIVATE)
-        val s1 = sh.getString("name", "")
-        binding.editName.setText(s1)
-
+        preferences.setProfileUser(binding.editName.text.toString())
+        preferences.setProfileEmail(binding.email.text.toString())
+        preferences.setProfilePhone(binding.phone.text.toString())
+        preferences.setProfileGender(binding.gender.text.toString())
+        preferences.setProfileDate(binding.data.text.toString())
     }
 
     override fun onPause() {
         super.onPause()
-        val sharedPreferences: SharedPreferences = this.requireActivity().getSharedPreferences("pref", Context.MODE_PRIVATE)
-        val myEdit = sharedPreferences.edit()
-        myEdit.putString("name", binding.editName.text.toString())
-        myEdit.apply()
-
+        preferences.setProfileUser(binding.editName.text.toString())
+        preferences.setProfileEmail(binding.email.text.toString())
+        preferences.setProfilePhone(binding.phone.text.toString())
+        preferences.setProfileGender(binding.gender.text.toString())
+        preferences.setProfileDate(binding.data.text.toString())
     }
 
     private fun imageChooser() {
@@ -64,3 +67,4 @@ class ProfileFragment : Fragment(){
         }
     }
 }
+

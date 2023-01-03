@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Update
 import com.example.taskapp.ui.home.new_task.TaskModel
 
 @Dao
@@ -23,4 +24,7 @@ interface TaskDao {
 
     @Query("SELECT * FROM TaskModel ORDER BY title ASC")
     fun getListByAlphabet():List<TaskModel>
+
+    @Update
+    fun updateTask(taskModel: TaskModel)
 }

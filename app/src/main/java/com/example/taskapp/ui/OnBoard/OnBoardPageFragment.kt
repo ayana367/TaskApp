@@ -11,8 +11,8 @@ import com.example.taskapp.R
 import com.example.taskapp.databinding.FragmentOnBoardPageBinding
 import com.example.taskapp.ui.utils.Preferences
 
-class OnBoardPageFragment(var listenerSkip:() -> Unit,
-                          var listenerNext:() -> Unit  ) : Fragment() {
+class OnBoardPageFragment(private var listenerSkip:() -> Unit,
+                        private  var listenerNext:() -> Unit  ) : Fragment() {
 
     private var binding: FragmentOnBoardPageBinding? = null
 
@@ -31,7 +31,7 @@ class OnBoardPageFragment(var listenerSkip:() -> Unit,
     }
     private fun initViews() {
         arguments.let {
-            val data = it?.getSerializable("onBoard") as BoardModel
+            val data = it?.getSerializable(BOARD) as BoardModel
             binding!!.tvTitleBoard.text = data.title
             binding!!.tvDescBoard.text = data.description
             data.img?.let { it1 -> binding!!.imageBoard.setImageResource(it1) }
@@ -54,5 +54,8 @@ class OnBoardPageFragment(var listenerSkip:() -> Unit,
             findNavController().navigate(R.id.navigation_home)
             Preferences(requireContext()).setBoardingShowed(true)
         }
+    }
+    companion object{
+        const val BOARD = "onBoard"
     }
 }

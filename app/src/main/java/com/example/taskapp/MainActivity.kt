@@ -28,23 +28,33 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications,R.id.navigation_profile,R.id.newTaskFragment,R.id.navigation_profile)
+                R.id.navigation_home,
+                R.id.navigation_dashboard,
+                R.id.navigation_notifications,
+                R.id.navigation_profile,
+                R.id.newTaskFragment,
+                R.id.navigation_profile,
+                R.id.authFragment
+            )
         )
 
-        if(Preferences(applicationContext).isBoardingShowed())
+      //  navController.navigate(R.id.authFragment)
+
+         if(Preferences(applicationContext).isBoardingShowed())
             navController.navigate(R.id.navigation_home)
         else navController.navigate(R.id.onBoardFragment)
 
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
-        navController.addOnDestinationChangedListener{ _, destination, _ ->
-            if(destination.id == R.id.newTaskFragment || destination.id == R.id.onBoardFragment){
-                navView.visibility = View.GONE
-            }else navView.visibility = View.VISIBLE
-            if (destination.id == R.id.onBoardFragment) {
-                supportActionBar?.hide()
+        val list = setOf( R.id.newTaskFragment,R.id.onBoardFragment,R.id.authFragment)
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            if (list.contains(destination.id)){
+                if (list.contains(destination.id)) {
+                    navView.visibility = View.GONE
+                } else navView.visibility = View.VISIBLE
+                if (list.contains(destination.id)) {
+                    supportActionBar?.hide()
+                }
             }
         }
     }

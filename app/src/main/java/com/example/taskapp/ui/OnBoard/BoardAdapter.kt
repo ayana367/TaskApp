@@ -1,3 +1,4 @@
+@file:Suppress("DEPRECATION")
 package com.example.taskapp.ui.OnBoard
 
 import androidx.core.os.bundleOf
@@ -5,11 +6,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.example.taskapp.R
+import com.example.taskapp.ui.OnBoard.OnBoardPageFragment.Companion.BOARD
 
 
 class BoardAdapter(fm: FragmentManager,
-                   var listenerSkip: () -> Unit,
-                   var listenerNext: () -> Unit,
+                 private var listenerSkip: () -> Unit,
+                 private  var listenerNext: () -> Unit,
 ): FragmentStatePagerAdapter(fm) {
 
     private val  listBoarding = arrayOf(
@@ -36,7 +38,7 @@ class BoardAdapter(fm: FragmentManager,
     override fun getCount(): Int = listBoarding.size
 
     override fun getItem(position: Int): Fragment {
-        val data = bundleOf("onBoard" to listBoarding[position])
+        val data = bundleOf(BOARD to listBoarding[position])
         val fragment = OnBoardPageFragment(listenerSkip,listenerNext)
         fragment.arguments = data
         return fragment

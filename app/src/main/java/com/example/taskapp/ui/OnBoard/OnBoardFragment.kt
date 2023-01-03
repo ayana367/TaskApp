@@ -6,8 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.taskapp.databinding.FragmentOnBoardBinding
-import com.example.taskapp.databinding.FragmentProfileBinding
-import com.tbuonomo.viewpagerdotsindicator.DotsIndicator
 import com.tbuonomo.viewpagerdotsindicator.SpringDotsIndicator
 
 

@@ -5,10 +5,10 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class TaskModel(
-@PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = true)
     val id : Long? = null,
-    val image : String,
-    val title : String,
-    val description : String,
-    val data : String
+    var image : String,
+    var title : String,
+    var description : String,
+    var data : String
 ):java.io.Serializable

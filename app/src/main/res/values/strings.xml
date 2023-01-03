@@ -9,4 +9,20 @@
     <string name="title">Title</string>
     <string name="save">Save</string>
     <string name="description">Description</string>
+    <string name="update">Update</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+    <string name="are_you_sure_you_want_to_delete">Вы точно хотите удалить?</string>
+    <string name="number">number</string>
+    <string name="data">Data</string>
+    <string name="todo">TODO</string>
+    <string name="here_you_can_write_down_something_important_or_make_a_schedule_for_tomorrow">Here you can write down something important or make a schedule for tomorrow:)</string>
+    <string name="skip">SKIP</string>
+    <string name="next">NEXT</string>
+    <string name="start">Start</string>
+    <string name="username">username</string>
+    <string name="email">email</string>
+    <string name="phone">phone</string>
+    <string name="gender">gender</string>
+    <string name="birth">birth</string>
 </resources>
