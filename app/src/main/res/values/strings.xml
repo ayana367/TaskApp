@@ -25,4 +25,7 @@
     <string name="phone">phone</string>
     <string name="gender">gender</string>
     <string name="birth">birth</string>
+    <string name="send">Send</string>
+    <string name="phone_number">Phone number</string>
+    <string name="enter_code">Enter code</string>
 </resources>

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".auth.AuthFragment">
+    tools:context=".ui.auth.AuthFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/auth_container"
@@ -22,16 +22,36 @@
             app:lottie_rawRes="@raw/auth"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
-            app:layout_constraintBottom_toTopOf="@id/et_layout_data"
+            app:layout_constraintBottom_toTopOf="@id/et_layout_phone"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/et_layout_data"
+            android:id="@+id/et_layout_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/number"
+            android:hint="@string/phone_number"
+            android:layout_marginTop="20dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:layout_constraintTop_toBottomOf="@id/animationView"
+            app:layout_constraintStart_toStartOf="@id/auth_container"
+            app:layout_constraintEnd_toEndOf="@id/auth_container">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="+996"
+                android:inputType="textPhonetic"
+                android:id="@+id/et_phone"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:visibility="gone"
+            android:id="@+id/et_layout_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter_code"
             android:layout_marginTop="20dp"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             app:layout_constraintTop_toBottomOf="@id/animationView"
@@ -42,18 +62,35 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPhonetic"
-                android:id="@+id/et_data"/>
+                android:id="@+id/et_code"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_save"
+            android:id="@+id/btn_send"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/et_layout_data"
+            app:layout_constraintTop_toBottomOf="@id/et_layout_phone"
             app:layout_constraintStart_toStartOf="@id/auth_container"
             app:layout_constraintEnd_toEndOf="@id/auth_container"
             android:layout_marginTop="16dp"
-            android:text="@string/save"
+            android:text="@string/send"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:textSize="20sp"
+            app:cornerRadius="10dp"
+            android:paddingVertical="12dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:visibility="gone"
+            android:id="@+id/btn_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/et_layout_code"
+            app:layout_constraintStart_toStartOf="@id/auth_container"
+            app:layout_constraintEnd_toEndOf="@id/auth_container"
+            android:layout_marginTop="16dp"
+            android:text="Confirm"
             android:textColor="@color/white"
             android:textStyle="bold"
             android:textAllCaps="false"
@@ -62,4 +99,5 @@
             android:paddingVertical="12dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

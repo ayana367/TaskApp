@@ -1,4 +1,4 @@
-package com.example.taskapp.ui.OnBoard
+package com.example.taskapp.ui.notifications.onBoard
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,11 +10,13 @@ import androidx.navigation.fragment.findNavController
 import com.example.taskapp.R
 import com.example.taskapp.databinding.FragmentOnBoardPageBinding
 import com.example.taskapp.ui.utils.Preferences
+import com.google.firebase.auth.FirebaseAuth
 
 class OnBoardPageFragment(private var listenerSkip:() -> Unit,
                         private  var listenerNext:() -> Unit  ) : Fragment() {
 
     private var binding: FragmentOnBoardPageBinding? = null
+    private var auth = FirebaseAuth.getInstance()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,8 +53,12 @@ class OnBoardPageFragment(private var listenerSkip:() -> Unit,
         }
 
         binding!!.btnStart.setOnClickListener{
-            findNavController().navigate(R.id.navigation_home)
-            Preferences(requireContext()).setBoardingShowed(true)
+            if (auth.currentUser != null){
+                findNavController().navigate(R.id.navigation_home)
+            }else{
+                findNavController().navigate(R.id.authFragment)
+                Preferences(requireContext()).setBoardingShowed(true)
+            }
         }
     }
     companion object{

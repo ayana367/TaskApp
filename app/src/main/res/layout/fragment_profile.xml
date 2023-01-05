@@ -18,6 +18,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:background="@drawable/profile">
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_red"
+            android:layout_width="80dp"
+            android:layout_marginTop="10dp"
+            android:text="Выйти с акаунта"
+            android:textSize="9sp"
+            android:layout_height="45dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:backgroundTint="@color/red"/>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card"

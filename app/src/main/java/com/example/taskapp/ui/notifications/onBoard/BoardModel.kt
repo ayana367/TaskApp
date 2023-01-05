@@ -1,4 +1,4 @@
-package com.example.taskapp.ui.OnBoard
+package com.example.taskapp.ui.notifications.onBoard
 
 import java.io.Serializable
 

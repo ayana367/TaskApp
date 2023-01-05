@@ -1,4 +1,5 @@
 package com.example.taskapp.ui.profile
+import android.app.AlertDialog
 import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.navigation.fragment.findNavController
+import com.example.taskapp.R
 import com.example.taskapp.databinding.FragmentProfileBinding
 import com.example.taskapp.extenssion.loadImage
 import com.example.taskapp.ui.utils.Preferences
@@ -39,8 +42,23 @@ class ProfileFragment : Fragment() {
         binding.phone.setText(preferences.isProfilePhone())
         binding.gender.setText(preferences.isProfileGender())
         binding.data.setText(preferences.isProfileDate())
-
+        initListener()
         return binding.root
+    }
+
+    private fun initListener() {
+        binding.btnRed.setOnClickListener{
+            val builder = AlertDialog.Builder(requireContext())
+            builder.setMessage("Вы точно хотите выйти с акаунта?")
+            builder.setNeutralButton("Да"){ _, _ ->
+                findNavController().navigate(R.id.authFragment)
+                preferences.setProfileShowed(true)
+            }
+            builder.setPositiveButton("Нет"){ o2, _ ->
+                o2.dismiss()
+            }
+            builder.show()
+        }
     }
 
     override fun onResume() {

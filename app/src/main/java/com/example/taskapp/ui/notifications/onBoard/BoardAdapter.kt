@@ -1,12 +1,12 @@
 @file:Suppress("DEPRECATION")
-package com.example.taskapp.ui.OnBoard
+package com.example.taskapp.ui.notifications.onBoard
 
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.example.taskapp.R
-import com.example.taskapp.ui.OnBoard.OnBoardPageFragment.Companion.BOARD
+import com.example.taskapp.ui.notifications.onBoard.OnBoardPageFragment.Companion.BOARD
 
 
 class BoardAdapter(fm: FragmentManager,
