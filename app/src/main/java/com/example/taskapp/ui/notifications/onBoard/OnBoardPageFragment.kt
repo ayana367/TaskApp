@@ -53,11 +53,11 @@ class OnBoardPageFragment(private var listenerSkip:() -> Unit,
         }
 
         binding!!.btnStart.setOnClickListener{
-            if (auth.currentUser != null){
+            if (auth.currentUser != null) {
                 findNavController().navigate(R.id.navigation_home)
             }else{
                 findNavController().navigate(R.id.authFragment)
-                Preferences(requireContext()).setBoardingShowed(true)
+               Preferences(requireContext()) .setBoardingShowed(true)
             }
         }
     }

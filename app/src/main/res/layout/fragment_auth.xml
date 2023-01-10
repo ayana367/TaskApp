@@ -46,24 +46,109 @@
                 android:id="@+id/et_phone"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
+        <LinearLayout
             android:visibility="gone"
-            android:id="@+id/et_layout_code"
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/enter_code"
-            android:layout_marginTop="20dp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            app:layout_constraintTop_toBottomOf="@id/animationView"
-            app:layout_constraintStart_toStartOf="@id/auth_container"
-            app:layout_constraintEnd_toEndOf="@id/auth_container">
+            android:layout_height="100dp"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal"
+            android:padding="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/animationView">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPhonetic"
-                android:id="@+id/et_code"/>
-        </com.google.android.material.textfield.TextInputLayout>
+            <EditText
+                android:layout_margin="1dp"
+                android:background="@drawable/edittext"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:maxLength="1"
+                android:maxLines="1"
+                android:imeOptions="actionNext"
+                android:importantForAutofill="no"
+                tools:ignore="LabelFor"
+                android:id="@+id/one"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:inputType="number" />
+
+            <EditText
+                android:layout_margin="1dp"
+                android:background="@drawable/edittext"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:maxLength="1"
+                android:maxLines="1"
+                android:imeOptions="actionNext"
+                android:importantForAutofill="no"
+                android:id="@+id/two"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:inputType="number" />
+
+            <EditText
+                android:layout_margin="1dp"
+                android:background="@drawable/edittext"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:maxLength="1"
+                android:maxLines="1"
+                android:imeOptions="actionNext"
+                android:importantForAutofill="no"
+                android:id="@+id/three"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:inputType="number" />
+
+            <EditText
+                android:gravity="center"
+                android:layout_margin="1dp"
+                android:background="@drawable/edittext"
+                android:textColor="@color/black"
+                android:id="@+id/four"
+                android:maxLength="1"
+                android:maxLines="1"
+                android:imeOptions="actionNext"
+                android:importantForAutofill="no"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:inputType="number" />
+
+            <EditText
+
+                android:layout_margin="1dp"
+                android:background="@drawable/edittext"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:maxLength="1"
+                android:maxLines="1"
+                android:imeOptions="actionNext"
+                android:importantForAutofill="no"
+                android:id="@+id/five"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:inputType="number" />
+
+            <EditText
+                android:layout_margin="1dp"
+                android:background="@drawable/edittext"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:maxLength="1"
+                android:maxLines="1"
+                android:imeOptions="actionNext"
+                android:importantForAutofill="no"
+                android:id="@+id/six"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:inputType="number" />
+        </LinearLayout>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_send"
@@ -86,7 +171,7 @@
             android:id="@+id/btn_confirm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/et_layout_code"
+            app:layout_constraintTop_toBottomOf="@id/linearLayout"
             app:layout_constraintStart_toStartOf="@id/auth_container"
             app:layout_constraintEnd_toEndOf="@id/auth_container"
             android:layout_marginTop="16dp"
