@@ -54,6 +54,7 @@ class MainActivity : AppCompatActivity() {
             navController.navigate(R.id.authFragment)
         }
 
+
         if (Preferences(applicationContext).isProfileShowed())
             navController.navigate(R.id.authFragment )
 
