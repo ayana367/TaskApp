@@ -77,7 +77,7 @@ class AuthFragment : Fragment() {
                     binding.etLayoutPhone.isVisible = false
                     binding.btnSend.isVisible = false
 
-                    binding.linearLayout.isVisible = true
+                    binding.smsCodeView.isVisible = true
                     binding.btnConfirm.isVisible = true
                     Log.d("ololo", "onCodeSent:$verificationCode")
                     super.onCodeSent(verificationCode, p1)
@@ -93,13 +93,8 @@ class AuthFragment : Fragment() {
     }
 
     private fun sendCode() {
-        val otp = "${binding.one.text}${
-            binding.two.text}${
-            binding.three.text}${
-            binding.four.text}${
-            binding.five.text}${
-            binding.six.text}"
-        val credential = correctCode?.let { it1 -> PhoneAuthProvider.getCredential(it1, otp) }
+
+        val credential = correctCode?.let { it1 -> PhoneAuthProvider.getCredential(it1, binding.smsCodeView.enteredCode) }
 
         if (credential != null) {
             signInWithPhoneAuthCredential(credential)
