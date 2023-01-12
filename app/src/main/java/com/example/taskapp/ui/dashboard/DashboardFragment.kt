@@ -18,6 +18,9 @@ class DashboardFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
+
+        binding.web.loadUrl("file:///android_asset/www/cat/dist/index.html")
+
         return binding.root
     }
 

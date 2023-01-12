@@ -20,6 +20,8 @@ class NotificationsFragment : Fragment() {
         _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
 
 
+        binding.web.loadUrl("file:///android_asset/www/snow/dist/index.html")
+
         return binding.root
     }
 
